@@ -9,7 +9,7 @@ services:
     app2:
         networks:
             test:
-        image: ormaman/alibaba-nodejs4:20
+        image: ormaman/alibaba-nodejs4:11
         expose:
         - "8080" 
 
