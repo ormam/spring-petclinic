@@ -3,13 +3,13 @@ services:
     app1:
         networks:
             test:
-        image: ormaman/alibaba-nodejs4
+        image: ormaman/alibaba-nodejs4:20
         expose:
         - "8080"
     app2:
         networks:
             test:
-        image: ormaman/alibaba-nodejs4
+        image: ormaman/alibaba-nodejs4:20
         expose:
         - "8080" 
 
