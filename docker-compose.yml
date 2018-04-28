@@ -50,7 +50,7 @@ services:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=test
         depends_on:
-        - reverseproxy
+        - app1
         volumes:
             - "./conf.d:/etc/mysql/conf.d:ro"
             - ./src/main/resources/db/mysql:/docker-entrypoint-initdb.d
