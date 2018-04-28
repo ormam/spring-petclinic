@@ -17,6 +17,8 @@ services:
         build:
             context: .
             dockerfile: nginx.Dockerfile
+        networks:
+            test:
         ports:
             - '8080:80'
     
