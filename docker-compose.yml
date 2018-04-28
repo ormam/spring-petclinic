@@ -3,20 +3,18 @@ services:
     app1:
         networks:
             test:
-        image: itamar/statsd
+        image: ormaman/alibaba-nodejs4
         expose:
-        - "80"
+        - "8080"
     app2:
         networks:
             test:
-        image: itamar/statsd
+        image: ormaman/alibaba-nodejs4
         expose:
-        - "80" 
+        - "8080" 
 
     proxy:
         image: nginx
-        networks:
-            test:
         ports:
             - '8080:80'
         volumes:
