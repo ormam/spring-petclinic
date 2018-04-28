@@ -15,48 +15,12 @@ services:
 
     proxy:
         image: nginx
-        ports:
-            - '8080:80'
-        volumes:
-            version: '2'
-services:
-    app1:
         networks:
             test:
-        image: itamar/statsd
-        expose:
-        - "80"
-    app2:
-        networks:
-            test:
-        image: itamar/statsd
-        expose:
-        - "80" 
-
-    proxy:
-        image: nginx
         ports:
             - '8080:80'
         volumes:
             - nginx.conf /etc/nginx/nginx.conf
-    
-    mysql:
-        networks:
-             test:
-        image: mysql:5.7.8
-        ports:
-            - "3306:3306"
-        environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=test
-        depends_on:
-        - app1
-        volumes:
-            - "./conf.d:/etc/mysql/conf.d:ro"
-            - ./src/main/resources/db/mysql:/docker-entrypoint-initdb.d
-networks:
-  test:
-    driver: bridge
     
     mysql:
         networks:
