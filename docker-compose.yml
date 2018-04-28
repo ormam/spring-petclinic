@@ -1,9 +1,38 @@
-mysql:
-  image: mysql
-  ports:
-    - "3306:3306"
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=test
-  volumes:
-    - "./conf.d:/etc/mysql/conf.d:ro"
+version: '2'
+services:
+    app1:
+        networks:
+            test:
+        image: itamar/statsd
+        expose:
+        - "80"
+    app2:
+        networks:
+            test:
+        image: itamar/statsd
+        expose:
+        - "80" 
+
+    proxy:
+        image: nginx
+        ports:
+            - '8080:80'
+        volumes:
+    
+    mysql:
+        networks:
+             test:
+        image: mysql:5.7.8
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=test
+        depends_on:
+        - reverseproxy
+        volumes:
+            - "./conf.d:/etc/mysql/conf.d:ro"
+            - ./src/main/resources/db/mysql:/docker-entrypoint-initdb.d
+networks:
+  test:
+    driver: bridge
