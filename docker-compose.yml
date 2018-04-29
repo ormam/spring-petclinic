@@ -21,7 +21,7 @@ services:
             test:
         ports:
             - '8080:80'
-    
+  
     mysql:
         networks:
              test:
@@ -29,8 +29,8 @@ services:
         ports:
             - "3306:3306"
         environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_DATABASE=test
+            - MYSQL_ROOT_PASSWORD=petclinic
+            - MYSQL_DATABASE=petclinic
         depends_on:
         - app1
         volumes:
