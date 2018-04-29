@@ -3,13 +3,13 @@ services:
     app1:
         networks:
             test:
-        build: Dockerfile.java
+        build: ./Dockerfile.java
         expose:
         - "8080"
     app2:
         networks:
             test:
-        build: Dockerfile.java
+        build: ./Dockerfile.java
         expose:
         - "8080" 
 
