@@ -8,6 +8,8 @@ services:
             dockerfile: Dockerfile.java
         expose:
         - "8080"
+        depends_on:
+        - mysql
     app2:
         networks:
             test:
@@ -16,6 +18,8 @@ services:
             dockerfile: Dockerfile.java
         expose:
         - "8080"
+        depends_on:
+        - mysql
     proxy:
         build:
             context: .
@@ -33,8 +37,6 @@ services:
         environment:
             - MYSQL_ROOT_PASSWORD=petclinic
             - MYSQL_DATABASE=petclinic
-        depends_on:
-        - app1
         volumes:
             - "./conf.d:/etc/mysql/conf.d:ro"
             - ./src/main/resources/db/mysql:/docker-entrypoint-initdb.d
